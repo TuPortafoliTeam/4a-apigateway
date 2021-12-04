@@ -6,6 +6,24 @@ class PortafoliosAPI extends RESTDataSource {
     super();
     this.baseURL = serverConfig.portafolios_api_url;
   }
+  
+  //proyecto's dataSources
+
+  async getAllProyects(){
+    return await this.get('/proyectos');
+  }
+  async createProyect(proyecto){
+    return await this.post('/proyectos', proyecto);
+  }
+  async getProyectsById (idProyecto){
+    return await this.get(`/ms2App/proyectos/${idProyecto}`)
+  }
+  async putProyectsById (idProyecto, proyecto){
+    return await this.put(`/ms2App/proyectos/${idProyecto}`, proyecto)
+  }
+  async deleteProyectsById (idProyecto){
+    return await this.delete(`/ms2App/proyectos/${idProyecto}`)
+  }
 }
 
 module.exports = PortafoliosAPI;
