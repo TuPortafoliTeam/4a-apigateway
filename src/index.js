@@ -9,11 +9,10 @@ const authentication = require("./utils/authentication");
 const server = new ApolloServer({
   context: authentication,
   typeDefs,
-
   resolvers,
   dataSources: () => ({
-    accountAPI: new PortafoliosAPI(),
-    authAPI: new UserAPI(),
+    portafoliosAPI: new PortafoliosAPI(),
+    userAPI: new UserAPI(),
   }),
   introspection: true,
   playground: true,
