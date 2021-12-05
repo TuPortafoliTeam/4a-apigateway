@@ -7,15 +7,15 @@ class UserAPI extends RESTDataSource {
     this.baseURL = serverConfig.user_api_url;
   }
   async userByIdUsuario(idUsuario){
-    return await this.get(`/${idUsuario}`);
+    return await this.get(`${idUsuario}`);
   }
 
-  async createProfileRequest(user){
+  async createUserRequest(user){
       return await this.post('registro', user);
   }
 
-  async modifyProfileByusuario(user){
-    return await this.put('actualizar',user)
+  async modifyUserByIdUser(idUsuario){
+    return await this.put('actualizar',idUsuario)
   }
 
 }
