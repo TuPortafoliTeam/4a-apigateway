@@ -8,13 +8,13 @@ const authentication = async ({ req }) => {
   else {
     try {
       let requestOptions = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+        method: "GET",
+        headers: { "Content-Type": "application/json", Authorization: token },
         body: JSON.stringify({ token }),
         redirect: "follow",
       };
       let response = await fetch(
-        `${serverConfig.user_api_url}/verifyToken/`,
+        `${serverConfig.user_api_url}/usuario/validarToken`,
         requestOptions
       );
       if (response.status != 200) {
@@ -24,7 +24,7 @@ const authentication = async ({ req }) => {
           401
         );
       }
-      return { userIdToken: (await response.json()).UserId };
+      return { userIdToken: (await response.json()).data };
     } catch (error) {
       throw new ApolloError(`TOKEN ERROR: ${500}: ${error}`, 500);
     }
