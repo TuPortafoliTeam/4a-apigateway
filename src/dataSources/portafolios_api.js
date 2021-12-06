@@ -17,7 +17,6 @@ class PortafoliosAPI extends RESTDataSource {
   }
   async createProfile(profile) {
     profile = new Object(JSON.parse(JSON.stringify(profile)));
-    console.log(profile);
     return await this.post(`/perfil`, profile);
   }
   async updateProfile(profile, userId) {

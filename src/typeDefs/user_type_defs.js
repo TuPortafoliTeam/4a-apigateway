@@ -45,7 +45,7 @@ const userTypeDefs = gql`
     descripcion: String!
     metodologia: String
     formacion: [Formacion!]
-    trabajo: Trabajo
+    trabajo: [Trabajo]
     intereses: String
   }
 
@@ -54,7 +54,7 @@ const userTypeDefs = gql`
     descripcion: String!
     metodologia: String
     formacion: [FormacionInput!]
-    trabajo: TrabajoInput
+    trabajo: [TrabajoInput!]
     intereses: String
   }
 
