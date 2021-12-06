@@ -26,7 +26,7 @@ const userTypeDefs = gql`
   type RegistUser {
     exitoso: String!
     mensajeError: String
-    body: String
+    body: Int
   }
 
   input UserInput {
