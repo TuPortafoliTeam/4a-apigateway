@@ -49,7 +49,21 @@ const userTypeDefs = gql`
     intereses: String
   }
 
+  input PerfilInput {
+    usuario: Int!
+    descripcion: String!
+    metodologia: String
+    formacion: [FormacionInput!]
+    trabajo: TrabajoInput
+    intereses: String
+  }
+
   type Formacion {
+    institucion: String!
+    anio: String!
+    materia: String!
+  }
+  input FormacionInput {
     institucion: String!
     anio: String!
     materia: String!
@@ -60,15 +74,20 @@ const userTypeDefs = gql`
     cargo: String!
     funciones: [String!]!
   }
+  input TrabajoInput {
+    empresa: String!
+    cargo: String!
+    funciones: [String!]!
+  }
 
   input UserUpdateInput {
     user: UserInput!
-    profile: Perfil!
+    profile: PerfilInput!
     id: Int!
   }
 
   type UserProfile {
-    user: UserInput!
+    user: UserDetail!
     profile: Perfil!
   }
 

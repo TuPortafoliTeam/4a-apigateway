@@ -9,6 +9,7 @@ class PortafoliosAPI extends RESTDataSource {
 
   //cover;
   async createCover(cover) {
+    cover = new Object(JSON.parse(JSON.stringify(cover)));
     return await this.post(`/cover/create/`, cover);
   }
   async coverByIdCover(idCover) {
@@ -35,13 +36,13 @@ class PortafoliosAPI extends RESTDataSource {
   async createProyect(proyecto) {
     return await this.post("/proyectos", proyecto);
   }
-  async getProyectsById(idProyecto) {
+  async getProyectById(idProyecto) {
     return await this.get(`/ms2App/proyectos/${idProyecto}`);
   }
-  async putProyectsById(idProyecto, proyecto) {
+  async putProyectById(idProyecto, proyecto) {
     return await this.put(`/ms2App/proyectos/${idProyecto}`, proyecto);
   }
-  async deleteProyectsById(idProyecto) {
+  async deleteProyectById(idProyecto) {
     return await this.delete(`/ms2App/proyectos/${idProyecto}`);
   }
 }

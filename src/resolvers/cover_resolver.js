@@ -1,15 +1,14 @@
 const coverResolver = {
-
-    Query: {
-        coverByIdCover: async (_, {idCover}, {dataSource}) => {
-            return await dataSource.coverByIdCover(idCover);
-        }
+  Query: {
+    coverByIdCover: async (_, { idCover }, { dataSources }) => {
+      return await dataSources.portafoliosAPI.coverByIdCover(idCover);
     },
-    Mutation: {
-        createCover: async (_, {cover}, {dataSource}) => {
-            return await dataSource,createCover(cover);
-        }
-    }
-}
+  },
+  Mutation: {
+    createCover: async (_, { coverletter }, { dataSources }) => {
+      return await dataSources.portafoliosAPI.createCover(coverletter);
+    },
+  },
+};
 
 module.exports = coverResolver;

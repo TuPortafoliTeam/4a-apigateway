@@ -1,24 +1,23 @@
 const proyectoResolver = {
-    Query: {
-        getAllProyects: async(_, { dataSources }) => {
-            return await dataSources.PortafoliosAPI.getAllProyects();
-
-        },
-        getProyectsById: async(_, { idProyecto }, {dataSources}) =>{
-            return await dataSources.PortafoliosAPI.getProyectsById(idProyecto);
-        }
+  Query: {
+    getProyectById: async (_, { idProyecto }, { dataSources }) => {
+      return await dataSources.portafoliosAPI.getProyectsById(idProyecto);
     },
-    Mutation: {
-        createProyect:  async(_, { proyecto }, { dataSources }) => {
-            return await dataSources.PortafoliosAPI.createProyect(proyecto);
-        },
-        putProyectById: async(_, {idProyecto, proyecto}, { dataSources })=> {
-            return await dataSources.PortafoliosAPI.putProyectById(idProyecto, proyecto)
-        },
-        deleteProyectsById: async(_, { idProyecto }, {dataSources}) =>{
-            return await dataSources.PortafoliosAPI.deleteProyectsById(idProyecto);
-        }
-    }
-}
+  },
+  Mutation: {
+    createProyect: async (_, { proyecto }, { dataSources }) => {
+      return await dataSources.portafoliosAPI.createProyect(proyecto);
+    },
+    putProyectById: async (_, { idProyecto, proyecto }, { dataSources }) => {
+      return await dataSources.portafoliosAPI.putProyectById(
+        idProyecto,
+        proyecto
+      );
+    },
+    deleteProyectById: async (_, { idProyecto }, { dataSources }) => {
+      return await dataSources.portafoliosAPI.deleteProyectById(idProyecto);
+    },
+  },
+};
 
 module.exports = proyectoResolver;

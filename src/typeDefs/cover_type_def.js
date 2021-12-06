@@ -1,21 +1,27 @@
-const { gql } = require('apollo-server'); 
+const { gql } = require("apollo-server");
 
 const coverTypeDef = gql`
-    type Cover {
-        idCover = Int!
-        idUsuario = Int!
-        trabajo = String
-        contenido = String
-    }
+  type Cover {
+    idCover: Int!
+    idUsuario: Int!
+    trabajo: String
+    contenido: String
+  }
 
-    type Query {
-        coverByIdUser(idUsuario: Int!): Cover
-        coverByIdCover(idCover: Int!): Cover
-    }
+  input CoverInput {
+    idCover: Int!
+    idUsuario: Int!
+    trabajo: String
+    contenido: String
+  }
 
-    extend type Mutation {
-        createCover(coverletter: Cover!): Cover
-    }
+  type Query {
+    coverByIdCover(idCover: Int!): Cover
+  }
+
+  extend type Mutation {
+    createCover(coverletter: CoverInput!): Cover
+  }
 `;
 
 module.exports = coverTypeDef;
