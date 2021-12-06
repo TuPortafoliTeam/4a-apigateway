@@ -14,7 +14,7 @@ const userResolver = {
       let userAns = await dataSources.userAPI.registUser(user);
       console.log(userAns);
       await dataSources.portafoliosAPI.createProfile({
-        usuario: userAns.idUsuario,
+        usuario: userAns.data,
         formacion: [],
         trabajo: [],
       });
