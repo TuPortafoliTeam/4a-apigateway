@@ -29,6 +29,28 @@ const userTypeDefs = gql`
     body: Int
   }
 
+  type Formacion {
+    institucion: String!
+    anio: String!
+    materia: String!
+  }
+  input FormacionInput {
+    institucion: String!
+    anio: String!
+    materia: String!
+  }
+
+  type Trabajo {
+    empresa: String!
+    cargo: String!
+    funciones: [String!]!
+  }
+  input TrabajoInput {
+    empresa: String!
+    cargo: String!
+    funciones: [String!]!
+  }
+
   input UserInput {
     idUsuario: Int
     tipoDocIdentidad: String!
@@ -56,28 +78,6 @@ const userTypeDefs = gql`
     formacion: [FormacionInput!]!
     trabajo: [TrabajoInput!]!
     intereses: String
-  }
-
-  type Formacion {
-    institucion: String!
-    anio: String!
-    materia: String!
-  }
-  input FormacionInput {
-    institucion: String!
-    anio: String!
-    materia: String!
-  }
-
-  type Trabajo {
-    empresa: String!
-    cargo: String!
-    funciones: [String!]!
-  }
-  input TrabajoInput {
-    empresa: String!
-    cargo: String!
-    funciones: [String!]!
   }
 
   input UserUpdateInput {
