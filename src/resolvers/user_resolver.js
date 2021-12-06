@@ -29,13 +29,22 @@ const userResolver = {
       ans.user = JSON.parse(
         JSON.stringify(await dataSources.userAPI.updateUser(user.user))
       );
-      console.log(ans.user);
+      ans.user = ans.user.body;
       ans.profile = JSON.parse(
         JSON.stringify(
           await dataSources.portafoliosAPI.updateProfile(user.profile, user.id)
         )
       );
-      console.log(ans.profile);
+      ans.profile.formacion = JSON.parse(ans.profile.formacion);
+      ans.profile.trabajo = JSON.parse(ans.profile.trabajo);
+      for (let tr in ans.profile.trabajo) {
+        let st = JSON.stringify(ans.profile.trabajo[tr].funciones).replace(
+          /'/g,
+          '"'
+        );
+        st = st.substring(1, st.length - 1);
+        ans.profile.trabajo[tr].funciones = JSON.parse(st);
+      }
       return ans;
     },
   },
