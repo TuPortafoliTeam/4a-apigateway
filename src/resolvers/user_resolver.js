@@ -26,11 +26,16 @@ const userResolver = {
 
     updateUser: async (_, { user }, { dataSources }) => {
       let ans = {};
-      ans.user = await dataSources.userAPI.updateUser(user.user);
-      ans.profile = await dataSources.portafoliosAPI.updateProfile(
-        user.profile,
-        user.id
+      ans.user = JSON.parse(
+        JSON.stringify(await dataSources.userAPI.updateUser(user.user))
       );
+      console.log(ans.user);
+      ans.profile = JSON.parse(
+        JSON.stringify(
+          await dataSources.portafoliosAPI.updateProfile(user.profile, user.id)
+        )
+      );
+      console.log(ans.profile);
       return ans;
     },
   },

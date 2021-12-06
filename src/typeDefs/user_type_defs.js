@@ -66,8 +66,8 @@ const userTypeDefs = gql`
     usuario: Int!
     descripcion: String!
     metodologia: String
-    formacion: [Formacion!]
-    trabajo: [Trabajo]
+    formacion: [Formacion!]!
+    trabajo: [Trabajo!]!
     intereses: String
   }
 
