@@ -1,7 +1,7 @@
 const proyectoResolver = {
   Query: {
     getProyectById: async (_, { idProyecto }, { dataSources }) => {
-      return await dataSources.portafoliosAPI.getProyectsById(idProyecto);
+      return await dataSources.portafoliosAPI.getProyectById(idProyecto);
     },
   },
   Mutation: {

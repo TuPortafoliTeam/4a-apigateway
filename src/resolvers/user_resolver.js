@@ -1,12 +1,25 @@
 const userResolver = {
   Query: {
     userDetail: async (_, { userId }, { dataSources, userIdToken }) => {
-      if (userId == userIdToken) {
-        let ans = {};
-        ans.user = await dataSources.userAPI.userDetail(userId);
-        ans.profile = await dataSources.portafoliosAPI.profileDetail(userId);
-        return ans;
-      } else return null;
+      let ans = {};
+      ans.user = JSON.parse(
+        JSON.stringify(await dataSources.userAPI.userDetail(userId))
+      );
+      ans.user = ans.user.body;
+      ans.profile = JSON.parse(
+        JSON.stringify(await dataSources.portafoliosAPI.profileDetail(userId))
+      );
+      ans.profile.formacion = JSON.parse(ans.profile.formacion);
+      ans.profile.trabajo = JSON.parse(ans.profile.trabajo);
+      for (let tr in ans.profile.trabajo) {
+        let st = JSON.stringify(ans.profile.trabajo[tr].funciones).replace(
+          /'/g,
+          '"'
+        );
+        st = st.substring(1, st.length - 1);
+        ans.profile.trabajo[tr].funciones = JSON.parse(st);
+      }
+      return ans;
     },
   },
   Mutation: {

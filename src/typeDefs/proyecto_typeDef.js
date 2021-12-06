@@ -26,11 +26,11 @@ const proyectosTypeDefs = gql`
   type Proyecto {
     _id: String!
     nombreProyecto: String!
-    tecnologiasUsadas: [Tecnologia!]!
+    tecnologiasUsadas: [Tecnologia!]
     tematica: String!
-    duracion: Duracion!
+    duracion: Duracion
     descripcionProyecto: String!
-    enlaces: [Enlaces!]!
+    enlaces: [Enlaces!]
     usuario: String!
   }
   input inputProyecto {

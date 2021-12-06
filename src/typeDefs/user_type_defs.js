@@ -64,7 +64,7 @@ const userTypeDefs = gql`
 
   type Perfil {
     usuario: Int!
-    descripcion: String!
+    descripcion: String
     metodologia: String
     formacion: [Formacion!]!
     trabajo: [Trabajo!]!
@@ -73,7 +73,7 @@ const userTypeDefs = gql`
 
   input PerfilInput {
     usuario: Int!
-    descripcion: String!
+    descripcion: String
     metodologia: String
     formacion: [FormacionInput!]!
     trabajo: [TrabajoInput!]!
