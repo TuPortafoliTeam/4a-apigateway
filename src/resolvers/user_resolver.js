@@ -12,6 +12,7 @@ const userResolver = {
   Mutation: {
     registUser: async (_, { user }, { dataSources }) => {
       let userAns = await dataSources.userAPI.registUser(user);
+      console.log(userAns);
       await dataSources.portafoliosAPI.createProfile({
         usuario: userAns.idUsuario,
         formacion: [],
