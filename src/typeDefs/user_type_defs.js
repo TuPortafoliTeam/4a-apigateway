@@ -15,7 +15,7 @@ const userTypeDefs = gql`
   type Access {
     exitoso: String!
     mensajeError: String
-    body: UserDetail
+    body: String!
   }
 
   input CredentialsInput {
@@ -40,20 +40,46 @@ const userTypeDefs = gql`
     idTipoEntidad: Int!
   }
 
-  type UserRU {
-    exitoso: String!
-    mensajeError: String
-    body: UserDetail
+  type Perfil {
+    usuario: Int!
+    descripcion: String!
+    metodologia: String
+    formacion: [Formacion!]
+    trabajo: Trabajo
+    intereses: String
+  }
+
+  type Formacion {
+    institucion: String!
+    anio: String!
+    materia: String!
+  }
+
+  type Trabajo {
+    empresa: String!
+    cargo: String!
+    funciones: [String!]!
+  }
+
+  input UserUpdateInput {
+    user: UserInput!
+    profile: Perfil!
+    id: Int!
+  }
+
+  type UserProfile {
+    user: UserInput!
+    profile: Perfil!
   }
 
   type Mutation {
     registUser(user: UserInput!): RegistUser!
     login(credentials: CredentialsInput!): Access!
-    updateUser(user: UserInput!): UserRU!
+    updateUser(user: UserUpdateInput!): UserProfile!
   }
 
   type Query {
-    userDetail(userId: Int!): UserRU!
+    userDetail(userId: Int!): UserProfile!
   }
 `;
 

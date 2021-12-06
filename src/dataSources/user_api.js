@@ -23,7 +23,7 @@ class UserAPI extends RESTDataSource {
   }
 
   async userDetail(userId) {
-    return await this.get(`/usuario/${userId}`);
+    return await this.get(`/usuario/detalle/${userId}`);
   }
 }
 
