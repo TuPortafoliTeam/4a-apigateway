@@ -12,7 +12,11 @@ const userResolver = {
   Mutation: {
     registUser: async (_, { user }, { dataSources }) => {
       let userAns = await dataSources.userAPI.registUser(user);
-      await dataSources.portafoliosAPI.createProfile(userAns.idUsuario);
+      await dataSources.portafoliosAPI.createProfile({
+        usuario: userAns.idUsuario,
+        formacion: [],
+        trabajo: [],
+      });
       return userAns;
     },
 
