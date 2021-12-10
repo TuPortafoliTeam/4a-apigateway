@@ -31,19 +31,19 @@ class PortafoliosAPI extends RESTDataSource {
   //proyecto's dataSources
 
   async getAllProyects() {
-    return await this.get("/proyectos");
+    return await this.get("/ms2App/proyectos/");
   }
   async createProyect(proyecto) {
-    return await this.post("/proyectos", proyecto);
+    return await this.post("/ms2App/proyectos/", proyecto);
   }
   async getProyectById(idProyecto) {
     return await this.get(`/ms2App/proyectos/${idProyecto}`);
   }
   async putProyectById(idProyecto, proyecto) {
-    return await this.put(`/ms2App/proyectos/${idProyecto}`, proyecto);
+    return await this.put(`/ms2App/proyectos/${idProyecto}/`, proyecto);
   }
   async deleteProyectById(idProyecto) {
-    return await this.delete(`/ms2App/proyectos/${idProyecto}`);
+    return await this.delete(`/ms2App/proyectos/${idProyecto}/`);
   }
 }
 

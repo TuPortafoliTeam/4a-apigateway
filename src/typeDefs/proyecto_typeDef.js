@@ -10,7 +10,7 @@ const proyectosTypeDefs = gql`
     fin: String
   }
   type Enlaces {
-    Enlace: String!
+    enlace: String!
   }
   input TecnologiaInput {
     nombre: String!
@@ -21,7 +21,7 @@ const proyectosTypeDefs = gql`
     fin: String
   }
   input EnlacesInput {
-    Enlace: String!
+    enlace: String!
   }
   type Proyecto {
     _id: String!
@@ -42,13 +42,17 @@ const proyectosTypeDefs = gql`
     enlaces: [EnlacesInput!]!
     usuario: String!
   }
+  type deleteMessage {
+    message: String
+  }
   type Query {
     getProyectById(idProyecto: String!): Proyecto
+    getAllProyects: [Proyecto]
   }
   type Mutation {
     createProyect(proyecto: inputProyecto!): Proyecto
     putProyectById(idProyecto: String!, proyecto: inputProyecto!): Proyecto
-    deleteProyectById(idProyecto: String!): Proyecto
+    deleteProyectById(idProyecto: String!): deleteMessage
   }
 `;
 
