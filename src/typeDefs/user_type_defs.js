@@ -12,10 +12,15 @@ const userTypeDefs = gql`
     idTipoEntidad: Int!
   }
 
+  type DataLogin {
+    id: Int!
+    token: String!
+  }
+
   type Access {
     exitoso: String!
     mensajeError: String
-    body: String!
+    body: DataLogin!
   }
 
   input CredentialsInput {
